@@ -97,6 +97,31 @@ The most challenging part to me was to find a way to record multiple hits. When 
   | 5000000      | 0.0334384 s | 0.467181 s |
 
 - How does the speed further compare when not using a prefix lookup table versus using a prefix lookup table with different values of `k`?
+
+  - Test on NC_003070.9 (30.8 MB)
+
+  | Query length | naive (no preftab) | naive (k=2) | naive (k=4) | naive (k=6) | naive (k=8)  |
+  | ------------ | ------------------ | ----------- | ----------- | ----------- | ------------ |
+  | 10           | 0.0343952 s        | 0.0342457 s | 0.0302296 s | 0.0309253 s | 0.0261286 s  |
+  | 100          | 0.0297995 s        | 0.033441 s  | 0.036452 s  | 0.0359773 s | 0.00842967 s |
+  | 1000         | 0.0294769 s        | 0.0378476 s | 0.0353955 s | 0.023486 s  | 0.0178751 s  |
+  | 10000        | 0.0284526 s        | 0.0468293 s | 0.0386028 s | 0.0298618 s | 0.0228138 s  |
+  | 100000       | 0.0331082 s        | 0.0335216 s | 0.0338982 s | 0.0233689 s | 0.006043 s   |
+  | 1000000      | 0.0309477 s        | 0.0393858 s | 0.0470415 s | 0.0367223 s | 0.0189974 s  |
+  | 5000000      | 0.0334384 s        | 0.0301509 s | 0.0298986 s | 0.0232732 s | 0.0199204 s  |
+
+  | Query length | simpaccel (no preftab) | simpaccel (k=2) | simpaccel (k=4) | simpaccel (k=6) | simpaccel (k=8) |
+  | ------------ | ---------------------- | --------------- | --------------- | --------------- | --------------- |
+  | 10           | 0.146011 s             | 0.1737 s        | 0.107652 s      | 0.0930255 s     | 0.101813 s      |
+  | 100          | 0.148972 s             | 0.152657 s      | 0.13058 s       | 0.131504 s      | 0.0312648 s     |
+  | 1000         | 0.141237 s             | 0.17904 s       | 0.10335 s       | 0.106558 s      | 0.070357 s      |
+  | 10000        | 0.150314 s             | 0.193296 s      | 0.112921 s      | 0.112231 s      | 0.0962014 s     |
+  | 100000       | 0.153611 s             | 0.183536 s      | 0.143058 s      | 0.100107 s      | 0.0572642 s     |
+  | 1000000      | 0.198005 s             | 0.235825 s      | 0.194576 s      | 0.158821 s      | 0.130897 s      |
+  | 5000000      | 0.467181 s             | 0.452442 s      | 0.407267 s      | 0.371217 s      | 0.358981 s      |
+
+​	From the table we can see that using a prefix lookup table will increase the speed, for both `naive` and `simpaccel` query mode. With the increase of `k`, the query will be faster; however, the increase in speed is not drastic. 
+
 - Given the scaling above, and the memory requirements of each type of index, what kind of tradeoff do you personally think makes sense in terms of using more memory in exchange for faster search.
 
 
