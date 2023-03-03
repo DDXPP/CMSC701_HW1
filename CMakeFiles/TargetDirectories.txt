@@ -1,0 +1,5 @@
+/Users/elliot/CMSC701_HW1/CMakeFiles/sais.dir
+/Users/elliot/CMSC701_HW1/CMakeFiles/buildsa.dir
+/Users/elliot/CMSC701_HW1/CMakeFiles/querysa.dir
+/Users/elliot/CMSC701_HW1/CMakeFiles/edit_cache.dir
+/Users/elliot/CMSC701_HW1/CMakeFiles/rebuild_cache.dir
