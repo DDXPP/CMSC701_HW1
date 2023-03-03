@@ -1,5 +1,15 @@
 # CMSC 701 Homework 1 Report
 
+[Link](https://github.com/DDXPP/CMSC701_HW1) to repo
+
+
+
+Commit hash: d14266bc98e1c1d90a64518dd29c3a5c54f21aa4
+
+https://github.com/DDXPP/CMSC701_HW1/commit/d14266bc98e1c1d90a64518dd29c3a5c54f21aa4
+
+ 
+
 ## Part (a): constructing the suffix array and an auxiliary index
 
 ### (1) Challenges
@@ -42,12 +52,7 @@ For performance analysis, I chose four reference strings with various size (9 KB
 
   From my results, we can see that it takes a lot longer to build prefix table than to build suffix array. With the increase of k, we can barely see any increase in output file size, and the increase in build time is also marginal. 
 
-- On machine with 32 GB RAM:
-
-  - 
-
-
-- Given the scaling above, how large of a genome do you think you could construct the suffix array for on a machine with 32GB of RAM, why?
+- Given the scaling above, how large of a genome do you think you could construct the suffix array for on a machine with 32GB of RAM
 
 ## Part (b): querying the suffix array
 
@@ -57,10 +62,40 @@ The most challenging part to me was to find a way to record multiple hits. When 
 
 ### (2) Performance Analysis
 
-For references of various size:
+- Queries of different length &  `naive`  vs `simpleaccel` 
 
-- How long does query take on references of different size, and on queries of different length?
-- How does the speed of the `naive` lookup algorithm compare to the speed of the `simpleaccel` lookup algorithm?
+  - NC_001802.1 (9 kb)
+
+  | Query length | naive        | simpaccel    |
+  | ------------ | ------------ | ------------ |
+  | 10           | 1.5875e-05 s | 0.0003915 s  |
+  | 100          | 1.4583e-05 s | 9.6583e-05 s |
+  | 1000         | 1.725e-05 s  | 2.9625e-05 s |
+  | 5000         | 3.1e-05 s    | 2.4333e-05 s |
+
+  - NC_007795.1 (2.9 MB)
+
+  | Query length | naive        | simpaccel   |
+  | ------------ | ------------ | ----------- |
+  | 10           | 0.00447137 s | 0.0157744 s |
+  | 100          | 0.00587504 s | 0.0199867 s |
+  | 1000         | 0.00654696 s | 0.0247351 s |
+  | 10000        | 0.00453758 s | 0.0155677 s |
+  | 100000       | 0.00445667 s | 0.0233038 s |
+  | 500000       | 0.00597654 s | 0.0468213 s |
+
+  - NC_003070.9 (30.8 MB)
+
+  | Query length | naive       | simpaccel  |
+  | ------------ | ----------- | ---------- |
+  | 10           | 0.0343952 s | 0.146011 s |
+  | 100          | 0.0297995 s | 0.148972 s |
+  | 1000         | 0.0294769 s | 0.141237 s |
+  | 10000        | 0.0284526 s | 0.150314 s |
+  | 100000       | 0.0331082 s | 0.153611 s |
+  | 1000000      | 0.0309477 s | 0.198005 s |
+  | 5000000      | 0.0334384 s | 0.467181 s |
+
 - How does the speed further compare when not using a prefix lookup table versus using a prefix lookup table with different values of `k`?
 - Given the scaling above, and the memory requirements of each type of index, what kind of tradeoff do you personally think makes sense in terms of using more memory in exchange for faster search.
 
